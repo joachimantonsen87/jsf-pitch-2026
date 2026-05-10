@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Visión completa de los proyectos deportivos: 3 Brooklyn Fitboxing + Athletic Club Hyrox/CrossFit. Plan a 7-10 años para socios.">
+<title>Proyectos · Plan socios</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="badge">Plan a 7-10 años · Mayo 2026</div>
+    <h1>Visión completa <span>4 proyectos deportivos</span></h1>
+    <p class="lead">3 clubs Brooklyn Fitboxing operando + 1 club híbrido CrossFit/Hyrox/Recovery: <strong>Sant Boi</strong> (410 socios), <strong>Viladecans</strong> (370), <strong>Centro Barcelona</strong> (500, 24 sacos, Virrei Amat), <strong>FORGE Fitness Club</strong> (365 socios, Virrei Amat).</p>
+  <p class="lead-mini" style="background: rgba(245, 183, 0, 0.10); border-left-color: var(--gold);"><strong>Sinergia Virrei Amat:</strong> Centro BCN BF y FORGE Fitness Club abren en la misma plaza con 18 meses de diferencia. Conceptos complementarios (boxing/cardio + CrossFit/Hyrox/Recovery), comunidad compartida, mismo equipo operativo (Jo Soc Fit). Cross-selling natural y brand recognition reforzado en zona.</p>
+    <p class="lead-mini">Modelo construido sobre la distribución mensual real de Sant Boi y benchmarks de mercado verificados. Vista <strong>Real Cash</strong>: incluye 1.000-1.200 €/mes en B a entrenadores en cada club. Cifras conservadoras en proyectos no abiertos.</p>
+    <div class="site-links">
+      <a href="../viladecans/" target="_blank">Modelo Viladecans →</a>
+      <a href="../forge/" target="_blank">Pitch deck FORGE →</a>
+    </div>
+  </div>
+</header>
+
+<section class="kpis">
+  <div class="container kpi-grid">
+    <div class="kpi"><div class="kpi-label">Caja mensual rodando</div><div class="kpi-value" id="kpi-caja-mes">—</div><div class="kpi-sub">4 proyectos en estado estable (2032)</div></div>
+    <div class="kpi"><div class="kpi-label">EBITDA anual consolidado</div><div class="kpi-value" id="kpi-ebitda">—</div><div class="kpi-sub">Books, los 4 proyectos estables</div></div>
+    <div class="kpi highlight"><div class="kpi-label">Salida Y7 (2034)</div><div class="kpi-value" id="kpi-y7">—</div><div class="kpi-sub">Vender los 3 BF, mantener CrossFit</div></div>
+    <div class="kpi highlight"><div class="kpi-label">Salida Y10 (2037)</div><div class="kpi-value" id="kpi-y10">—</div><div class="kpi-sub">Vender los 4 proyectos</div></div>
+    <div class="kpi"><div class="kpi-label">Equity total invertido</div><div class="kpi-value" id="kpi-equity">—</div><div class="kpi-sub">SB + Vila + BCN + CrossFit</div></div>
+    <div class="kpi"><div class="kpi-label">Money-on-Money Y10</div><div class="kpi-value" id="kpi-mom">—</div><div class="kpi-sub">Caja recibida / equity invertido</div></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <h2>1 · Generación de caja mensual con los 4 proyectos rodados</h2>
+    <p class="subtitle">Año 2032, los 3 BF rodando estable + CrossFit Y3 estable. Esto es lo que entra al grupo cada mes.</p>
+    <div class="club-grid four">
+      <div class="club-card sb">
+        <div class="club-name">Sant Boi</div>
+        <div class="club-socios" id="sb-socios">—</div>
+        <div class="club-table">
+          <div class="row"><span>Ventas/mes</span><span class="num" id="sb-ventas">—</span></div>
+          <div class="row"><span>Gastos/mes</span><span class="num" id="sb-gastos">—</span></div>
+          <div class="row total"><span>EBITDA caja/mes</span><span class="num" id="sb-ebitda">—</span></div>
+        </div>
+      </div>
+      <div class="club-card vila">
+        <div class="club-name">Viladecans</div>
+        <div class="club-socios" id="vila-socios">—</div>
+        <div class="club-table">
+          <div class="row"><span>Ventas/mes</span><span class="num" id="vila-ventas">—</span></div>
+          <div class="row"><span>Gastos/mes</span><span class="num" id="vila-gastos">—</span></div>
+          <div class="row total"><span>EBITDA caja/mes</span><span class="num" id="vila-ebitda">—</span></div>
+        </div>
+      </div>
+      <div class="club-card bcn">
+        <div class="club-name">Centro Barcelona</div>
+        <div class="club-socios" id="bcn-socios">—</div>
+        <div class="club-table">
+          <div class="row"><span>Ventas/mes</span><span class="num" id="bcn-ventas">—</span></div>
+          <div class="row"><span>Gastos/mes</span><span class="num" id="bcn-gastos">—</span></div>
+          <div class="row total"><span>EBITDA caja/mes</span><span class="num" id="bcn-ebitda">—</span></div>
+        </div>
+      </div>
+      <div class="club-card crossfit">
+        <div class="club-name">Athletic Club Virrei</div>
+        <div class="club-socios" id="cf-socios">—</div>
+        <div class="club-table">
+          <div class="row"><span>Ventas/mes</span><span class="num" id="cf-ventas">—</span></div>
+          <div class="row"><span>Gastos/mes</span><span class="num" id="cf-gastos">—</span></div>
+          <div class="row total"><span>EBITDA caja/mes</span><span class="num" id="cf-ebitda">—</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="club-card total-card" style="margin-top:20px; max-width:600px; margin-left:auto; margin-right:auto;">
+      <div class="club-name">TOTAL CONSOLIDADO</div>
+      <div class="club-socios" id="total-socios">—</div>
+      <div class="club-table">
+        <div class="row"><span>Ventas/mes</span><span class="num" id="total-ventas">—</span></div>
+        <div class="row"><span>Gastos/mes</span><span class="num" id="total-gastos">—</span></div>
+        <div class="row total"><span>EBITDA caja/mes</span><span class="num" id="total-ebitda">—</span></div>
+        <div class="row mini"><span>Equivalente anual</span><span class="num" id="total-anual">—</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="container">
+    <h2>2 · EBITDA anual consolidado</h2>
+    <p class="subtitle">Sumando los 4 proyectos en estado estable. EBITDA caja real, después de pagar todos los royalties, personal, alquiler, suministros, servicio deuda parcial.</p>
+    <div class="chart-wrap"><canvas id="chart-ebitda"></canvas></div>
+    <div class="ebitda-summary">
+      <div><span>EBITDA Books</span><strong id="ebitda-books">—</strong></div>
+      <div><span>EBITDA Real Cash</span><strong id="ebitda-real">—</strong></div>
+      <div><span>Diferencia (cash en B)</span><strong id="ebitda-diff">—</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <h2>3 · Cash flow consolidado año a año (2026 → 2037)</h2>
+    <p class="subtitle">Cash flow real al socio cada año. Sant Boi ya operando, Viladecans abre jun 2026, Centro Barcelona abre sep 2027, FORGE Fitness Club abre verano 2029.</p>
+    <div class="chart-wrap"><canvas id="chart-cf"></canvas></div>
+    <div class="table-scroll">
+      <table class="data-table wide">
+        <thead>
+          <tr><th>Año</th><th class="num">Sant Boi</th><th class="num">Viladecans</th><th class="num">Centro BCN</th><th class="num">FORGE</th><th class="num">TOTAL</th></tr>
+        </thead>
+        <tbody id="cf-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="container">
+    <h2>4 · Escenario salida · Venta de los proyectos</h2>
+    <p class="subtitle">Múltiplo de venta estándar para gimnasios funcionales rentables: 3x EBITDA. Restando deuda pendiente del préstamo en cada caso.</p>
+    <div class="two-col">
+      <div class="card">
+        <h3>📅 Salida Y7 · 2034</h3>
+        <p class="card-subtitle">Vender los 3 Brooklyn Fitboxing. Mantener FORGE operando (lleva solo 5 años, todavía en crecimiento de valor).</p>
+        <table class="data-table">
+          <tr><td>Sant Boi · venta neta</td><td class="num" id="y7-sb">—</td></tr>
+          <tr><td>Viladecans · venta neta</td><td class="num" id="y7-vila">—</td></tr>
+          <tr><td>Centro BCN · venta neta</td><td class="num" id="y7-bcn">—</td></tr>
+          <tr><td>FORGE · sigue operando</td><td class="num" style="color:var(--fg-soft);">—</td></tr>
+          <tr class="total"><td>Valor venta total (3 BF)</td><td class="num" id="y7-venta">—</td></tr>
+          <tr><td>+ Cash dividendos 2026-2034</td><td class="num" id="y7-divs">—</td></tr>
+          <tr class="total highlight-row"><td>TOTAL caja recibida</td><td class="num" id="y7-total">—</td></tr>
+          <tr><td>Money-on-Money</td><td class="num" id="y7-mom">—</td></tr>
+        </table>
+      </div>
+      <div class="card highlight-card">
+        <h3>📅 Salida Y10 · 2037</h3>
+        <p class="card-subtitle">Vender los 4 proyectos. Préstamos BF terminados, FORGE en Y8 con valor maduro.</p>
+        <table class="data-table">
+          <tr><td>Sant Boi · venta neta</td><td class="num" id="y10-sb">—</td></tr>
+          <tr><td>Viladecans · venta neta</td><td class="num" id="y10-vila">—</td></tr>
+          <tr><td>Centro BCN · venta neta</td><td class="num" id="y10-bcn">—</td></tr>
+          <tr><td>FORGE · venta neta</td><td class="num" id="y10-cf">—</td></tr>
+          <tr class="total"><td>Valor venta total (4 proyectos)</td><td class="num" id="y10-venta">—</td></tr>
+          <tr><td>+ Cash dividendos 2026-2037</td><td class="num" id="y10-divs">—</td></tr>
+          <tr class="total highlight-row"><td>TOTAL caja recibida</td><td class="num" id="y10-total">—</td></tr>
+          <tr><td>Money-on-Money</td><td class="num" id="y10-mom">—</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="note-card">
+      <strong>Equity total movilizado en los 4 proyectos:</strong> <span id="equity-total">—</span>. Sant Boi (80K, ya invertido), Viladecans (24K), Centro Barcelona (57K), FORGE Fitness Club (137K). Estructura societaria: los 3 BF comparten socios actuales (Jo Soc Fit), FORGE es un proyecto separado con la misma sociedad operadora.
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <h2>5 · El proyecto CrossFit/Hyrox · FORGE Fitness Club</h2>
+    <p class="subtitle">Club híbrido en Plaza Virrei Amat (Nou Barris, Barcelona), <strong>misma plaza que Centro BCN BF</strong>. 5 pilares: Performance Floor, Endurance Lab, Recovery Lab, Fisio Studio, Comunidad. Target 365 socios. Sinergia operativa con BF: comunidad compartida, cross-selling, mismo equipo operativo Jo Soc Fit.</p>
+    <div class="cf-overview">
+      <div class="cf-stat">
+        <div class="cf-stat-label">CapEx total</div>
+        <div class="cf-stat-value">250.000 €</div>
+        <div class="cf-stat-sub">500-600m² Nou Barris</div>
+      </div>
+      <div class="cf-stat">
+        <div class="cf-stat-label">Equity proyecto</div>
+        <div class="cf-stat-value">137.000 €</div>
+        <div class="cf-stat-sub">50% apalancamiento</div>
+      </div>
+      <div class="cf-stat">
+        <div class="cf-stat-label">Target socios</div>
+        <div class="cf-stat-value">365</div>
+        <div class="cf-stat-sub">Estable Y3 (2032)</div>
+      </div>
+      <div class="cf-stat">
+        <div class="cf-stat-label">TIR proyecto</div>
+        <div class="cf-stat-value">77,7%</div>
+        <div class="cf-stat-sub">7 años con venta</div>
+      </div>
+    </div>
+    <div class="cf-cta">
+      <a href="../forge/" target="_blank" class="cf-link">Ver pitch deck completo de FORGE →</a>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="container">
+    <h2>6 · Hipótesis clave del modelo</h2>
+    <div class="assum-grid">
+      <div class="assum-card">
+        <div class="assum-h">Ingreso medio socio BF</div>
+        <div class="assum-v">68,54 €/mes</div>
+        <div class="assum-s">Calibrado mes a mes con datos reales Sant Boi</div>
+      </div>
+      <div class="assum-card">
+        <div class="assum-h">Cuota media FORGE</div>
+        <div class="assum-v">95 €/mes</div>
+        <div class="assum-s">Mix mensual 110 + trimestral 95 + anual 80</div>
+      </div>
+      <div class="assum-card">
+        <div class="assum-h">Royalty Brooklyn Fitboxing</div>
+        <div class="assum-v">8,82% s/ventas + 2%/año</div>
+        <div class="assum-s">Real Sant Boi · BF sube tarifa anualmente</div>
+      </div>
+      <div class="assum-card">
+        <div class="assum-h">Total fees Brooklyn</div>
+        <div class="assum-v">15-17% s/ventas</div>
+        <div class="assum-s">Royalty + marketing + software + Power Up + Hit4Change</div>
+      </div>
+      <div class="assum-card">
+        <div class="assum-h">Múltiplo de venta</div>
+        <div class="assum-v">3x EBITDA</div>
+        <div class="assum-s">Estándar gimnasios funcionales rentables</div>
+      </div>
+      <div class="assum-card">
+        <div class="assum-h">Cash en B a entrenadores</div>
+        <div class="assum-v">1.000-1.200 €/mes por club</div>
+        <div class="assum-s">Sale de la caja del socio, no va a libros</div>
+      </div>
+      <div class="assum-card">
+        <div class="assum-h">Tipo IS</div>
+        <div class="assum-v">15% / 25%</div>
+        <div class="assum-s">Reducido 2 primeros ejercicios con beneficio (nueva creación)</div>
+      </div>
+      <div class="assum-card">
+        <div class="assum-h">Financiación FORGE</div>
+        <div class="assum-v">125K préstamo · 4,5%</div>
+        <div class="assum-s">50% apalancamiento, 10 años</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <h2>7 · Riesgos y dónde podríamos quedarnos cortos</h2>
+    <div class="risk-grid">
+      <div class="risk-card">
+        <div class="risk-h">Curva de socios más lenta</div>
+        <div class="risk-t">Si BCN tarda 36 meses en llegar a 500 (en vez de 30), EBITDA Y3 baja ~15K. Si FORGE tarda 36 meses para 365 socios, payback se estira a 28 meses.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-h">Canibalización entre clubs</div>
+        <div class="risk-t">Sant Boi y Viladecans están a 6 km. Centro BCN y FORGE comparten Plaza Virrei Amat pero conceptos complementarios (boxing 58€ vs CrossFit/Hyrox 95€), cross-selling natural. Riesgo bajo vs sinergia operativa alta.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-h">BF sube tarifas más agresivo</div>
+        <div class="risk-t">Asumimos +2%/año. Si suben 4%, EBITDA Y10 cae ~20K en cada club BF. FORGE no afectado (no franquicia BF).</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-h">Múltiplo de venta más bajo</div>
+        <div class="risk-t">Si vendemos a 2,5x en vez de 3x, valor venta Y10 cae ~250K. MoM bajaría a 12,3x (sigue siendo bueno).</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-h">Coach lead FORGE crítico</div>
+        <div class="risk-t">El modelo es coach-driven. Carlos como COO con equity garantiza continuidad y track record validado en BF Sant Boi (TOP 5 mundial). Comunidad y brand del club como respaldo.</div>
+      </div>
+      <div class="risk-card">
+        <div class="risk-h">Atención operativa diluida</div>
+        <div class="risk-t">Llevar 4 proyectos en paralelo es mucho. FORGE abre cuando BCN está en Y2 estable para no solapar ramp-ups críticos. Jo Soc Fit como sociedad operadora con foco en gestión escalable.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Modelo consolidado · Joachim Antonsen · Mayo 2026</p>
+    <p class="footer-small">Construido con datos reales mensuales de Sant Boi y benchmarks de mercado. Hipótesis conservadoras para proyectos no abiertos. Sites detallados: <a href="../viladecans/" target="_blank">Viladecans</a> · <a href="../forge/" target="_blank">FORGE Fitness Club</a>.</p>
+  </div>
+</footer>
+
+<script src="./data.js"></script>
+<script src="./main.js"></script>
+</body>
+</html>

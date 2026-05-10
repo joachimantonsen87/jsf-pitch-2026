@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Business case Brooklyn Fitboxing Viladecans — modelo financiero basado en datos reales de Sant Boi.">
+<title>BF Viladecans · Business Case</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="badge">Business Case · Mayo 2026</div>
+    <h1>Brooklyn Fitboxing <span>Viladecans</span></h1>
+    <p class="lead">Modelo financiero construido con la distribución mensual real de Sant Boi (Oct 2025 a Dic 2026). Financiación dual: <strong>renting 100K + IVA</strong> (Banco A, 7 años) y <strong>préstamo 100K</strong> (Banco B, 10 años), ambos al 4,5%. Target 400 socios.</p>
+  <p class="lead-mini">Doble vista: <strong>Books</strong> (lo que ven banco/Hacienda/comprador) y <strong>Real Cash</strong> (lo que sale de tu bolsillo, incluyendo 1.000 €/mes en B a entrenadores).</p>
+  </div>
+</header>
+
+<section class="kpis">
+  <div class="container kpi-grid">
+    <div class="kpi"><div class="kpi-label">Equity socio</div><div class="kpi-value" id="kpi-equity">—</div><div class="kpi-sub">Aporte inicial</div></div>
+    <div class="kpi"><div class="kpi-label">EBITDA real Y3+</div><div class="kpi-value" id="kpi-ebitda">—</div><div class="kpi-sub">Estable a 400 socios (real cash)</div></div>
+    <div class="kpi highlight"><div class="kpi-label">TIR 7 años</div><div class="kpi-value" id="kpi-tir">—</div><div class="kpi-sub">Real cash, venta 3x EBITDA</div></div>
+    <div class="kpi highlight"><div class="kpi-label">Money-on-Money</div><div class="kpi-value" id="kpi-mom">—</div><div class="kpi-sub">7 años, real cash</div></div>
+    <div class="kpi"><div class="kpi-label">Payback</div><div class="kpi-value" id="kpi-payback">—</div><div class="kpi-sub">Recuperación equity</div></div>
+    <div class="kpi"><div class="kpi-label">DSCR Año 1</div><div class="kpi-value" id="kpi-dscr">—</div><div class="kpi-sub">Cobertura renting + préstamo</div></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <h2>1 · Inversión y estructura financiera</h2>
+    <div class="two-col">
+      <div class="card">
+        <h3>Inversión y aporte socio</h3>
+        <table class="data-table">
+          <tr><td>CapEx (réplica Sant Boi, IVA incl.)</td><td class="num" id="cap-capex">—</td></tr>
+          <tr><td>Working capital arranque</td><td class="num" id="cap-wc">—</td></tr>
+          <tr class="total"><td>Inversión total proyecto</td><td class="num" id="cap-total">—</td></tr>
+          <tr><td>Renting Banco A (equipos)</td><td class="num" id="cap-renting">—</td></tr>
+          <tr><td>Préstamo Banco B (resto obra + canon)</td><td class="num" id="cap-prestamo">—</td></tr>
+          <tr class="total highlight-row"><td>Equity socio efectivo</td><td class="num" id="cap-equity">—</td></tr>
+          <tr><td>Apalancamiento total</td><td class="num" id="cap-apa">—</td></tr>
+        </table>
+        <p class="note">El IVA del CapEx que no es renting se recupera durante los primeros ~18 meses compensándolo contra el IVA mensual a pagar a Hacienda. El IVA del renting se paga mensualmente en la cuota y es deducible directo (compensa contra IVA repercutido).</p>
+      </div>
+      <div class="card">
+        <h3>Servicio de deuda mensual</h3>
+        <table class="data-table">
+          <tr><td><strong>Renting</strong> (Banco A · 100K + IVA · 7 años · 4,5% · res. 1%)</td><td></td></tr>
+          <tr><td style="padding-left:20px">Cuota base</td><td class="num" id="renting-base">—</td></tr>
+          <tr><td style="padding-left:20px">Cuota con IVA</td><td class="num" id="renting-iva">—</td></tr>
+          <tr><td><strong>Préstamo</strong> (Banco B · 100K · 10 años · 4,5%)</td><td></td></tr>
+          <tr><td style="padding-left:20px">Cuota mensual</td><td class="num" id="loan-mes">—</td></tr>
+          <tr class="total highlight-row"><td>Servicio deuda total mensual</td><td class="num" id="cuota-total">—</td></tr>
+          <tr><td>Servicio deuda total anual</td><td class="num" id="cuota-anio">—</td></tr>
+          <tr><td>Total intereses préstamo (10 años)</td><td class="num" id="loan-int">—</td></tr>
+        </table>
+        <h4>Amortización préstamo · saldo fin año</h4>
+        <table class="data-table compact">
+          <thead><tr><th>Año</th><th class="num">Intereses</th><th class="num">Principal</th><th class="num">Saldo</th></tr></thead>
+          <tbody id="amort-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="container">
+    <h2>2 · Curva de socios mes a mes</h2>
+    <p class="subtitle">Año 1 ligeramente más conservador que Sant Boi (Viladecans es un mercado algo más pequeño). Push a 400 socios en M18.</p>
+    <div class="chart-wrap"><canvas id="chart-socios"></canvas></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <h2>3 · P&L anual (10 años)</h2>
+    <p class="subtitle">Ventas, gastos y EBITDA caja calculados replicando la estructura mensual de costes real de Sant Boi.</p>
+    <div class="table-scroll">
+      <table class="data-table wide">
+        <thead>
+          <tr>
+            <th>Año</th><th>Socios</th><th class="num">Ventas</th><th class="num">Gastos</th>
+            <th class="num">Margen</th><th class="num">IVA pagado</th><th class="num">EBITDA caja</th>
+          </tr>
+        </thead>
+        <tbody id="pl-body"></tbody>
+      </table>
+    </div>
+    <div class="chart-wrap"><canvas id="chart-pl"></canvas></div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="container">
+    <h2>4 · Cash flow del socio</h2>
+    <p class="subtitle">Después de servicio de deuda (intereses + principal) e impuesto de sociedades. Tipo reducido 15% los 2 primeros ejercicios con beneficio, 25% normal después. La columna <strong>CF Real</strong> resta también los 1.000 €/mes en B a entrenadores.</p>
+    <div class="table-scroll">
+      <table class="data-table wide">
+        <thead>
+          <tr>
+            <th>Año</th><th class="num">EBITDA</th><th class="num">Intereses</th><th class="num">Principal</th>
+            <th>Tipo IS</th><th class="num">Impuestos</th><th class="num">CF Books</th><th class="num">CF Real</th><th class="num">DSCR</th>
+          </tr>
+        </thead>
+        <tbody id="cf-body"></tbody>
+      </table>
+    </div>
+    <div class="chart-wrap"><canvas id="chart-cf"></canvas></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <h2>5 · Retorno del socio</h2>
+    <p class="subtitle">Mostramos las dos vistas. <strong>Books</strong> para presentar al banco/inversor/comprador. <strong>Real cash</strong> para tu bolsillo de verdad (resta 1.000 €/mes en B).</p>
+    <div class="two-col">
+      <div class="card">
+        <h3>📊 Books · Venta 3x EBITDA Y7</h3>
+        <p class="card-subtitle">Lo que ve banco, Hacienda, comprador.</p>
+        <table class="data-table">
+          <tr><td>Equity invertido</td><td class="num" id="ret-equity-b">—</td></tr>
+          <tr><td>CF books acumulado Y1-Y7</td><td class="num" id="ret-cf-b">—</td></tr>
+          <tr><td>Valor venta Y7 (3x EBITDA books)</td><td class="num" id="ret-valor-b">—</td></tr>
+          <tr><td>Deuda pendiente Y7</td><td class="num" id="ret-deuda-b">—</td></tr>
+          <tr><td>Valor neto venta Y7</td><td class="num" id="ret-neto-b">—</td></tr>
+          <tr class="total"><td>Total caja socio (books)</td><td class="num" id="ret-total-b">—</td></tr>
+          <tr><td>TIR 7 años</td><td class="num" id="ret-tir-b">—</td></tr>
+          <tr><td>Money-on-Money</td><td class="num" id="ret-mom-b">—</td></tr>
+        </table>
+      </div>
+      <div class="card highlight-card">
+        <h3>💰 Real Cash · Tu bolsillo</h3>
+        <p class="card-subtitle">Books menos 1.000 €/mes en B a entrenadores (12K/año).</p>
+        <table class="data-table">
+          <tr><td>Equity invertido</td><td class="num" id="ret-equity">—</td></tr>
+          <tr><td>CF real acumulado Y1-Y7</td><td class="num" id="ret-cf">—</td></tr>
+          <tr><td>Valor venta Y7</td><td class="num" id="ret-valor">—</td></tr>
+          <tr><td>Deuda pendiente Y7</td><td class="num" id="ret-deuda">—</td></tr>
+          <tr><td>Valor neto venta Y7</td><td class="num" id="ret-neto">—</td></tr>
+          <tr class="total highlight-row"><td>Total caja real socio</td><td class="num" id="ret-total">—</td></tr>
+          <tr><td>TIR 7 años (real)</td><td class="num" id="ret-tir">—</td></tr>
+          <tr><td>Money-on-Money</td><td class="num" id="ret-mom">—</td></tr>
+          <tr><td>Payback</td><td class="num" id="ret-pay">—</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="card" style="margin-top: 20px;">
+      <h3>Sin venta · Mantener como negocio recurrente</h3>
+      <p>Si decides mantener Viladecans 10 años como cash machine sin vender:</p>
+      <table class="data-table">
+        <tr><td>Total caja 10 años books (dividendos brutos)</td><td class="num" id="ret-sin-total-b">—</td></tr>
+        <tr><td>Total caja 10 años real (post pagos en B)</td><td class="num" id="ret-sin-total">—</td></tr>
+        <tr><td>TIR 10 años (real)</td><td class="num" id="ret-sin-tir">—</td></tr>
+        <tr><td>MoM 10 años (real)</td><td class="num" id="ret-sin-mom">—</td></tr>
+      </table>
+      <p class="note">Año 11 en adelante, con deuda pagada, el cash flow real sube ~24K€/año (toda la cuota se libera).</p>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="container">
+    <h2>6 · Detalle mensual Año 1 y 2</h2>
+    <p class="subtitle">Granularidad mensual de los primeros 24 meses (los más críticos para tesorería).</p>
+    <div class="table-scroll">
+      <table class="data-table wide">
+        <thead>
+          <tr>
+            <th>Mes</th><th>Socios</th><th class="num">Ventas</th><th class="num">Gastos books</th>
+            <th class="num">Cash B</th><th class="num">IVA cash</th><th class="num">CF Books</th><th class="num">CF Real</th><th class="num">Crédito IVA</th>
+          </tr>
+        </thead>
+        <tbody id="mes-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="container">
+    <h2>7 · Supuestos clave</h2>
+    <div class="assumptions">
+      <div class="assum">
+        <div class="assum-label">Ingreso medio por socio</div>
+        <div class="assum-value">68,54 €/mes</div>
+        <div class="assum-source">Calibrado mes a mes con Sant Boi</div>
+      </div>
+      <div class="assum">
+        <div class="assum-label">Royalty Brooklyn</div>
+        <div class="assum-value">8,31% s/ ventas</div>
+        <div class="assum-source">Real Sant Boi septiembre 2026</div>
+      </div>
+      <div class="assum">
+        <div class="assum-label">Adyen (TPV)</div>
+        <div class="assum-value">1,08% s/ ventas</div>
+        <div class="assum-source">Real Sant Boi</div>
+      </div>
+      <div class="assum">
+        <div class="assum-label">Alquiler</div>
+        <div class="assum-value">1.050 €/mes</div>
+        <div class="assum-source">Local Viladecans</div>
+      </div>
+      <div class="assum">
+        <div class="assum-label">Personal a 400 socios</div>
+        <div class="assum-value">7.000 €/mes (con SS)</div>
+        <div class="assum-source">Sant Boi 360 + monitor extra</div>
+      </div>
+      <div class="assum">
+        <div class="assum-label">Múltiplo de venta Y7</div>
+        <div class="assum-value">3x EBITDA</div>
+        <div class="assum-source">Estándar gimnasios franquicia</div>
+      </div>
+      <div class="assum">
+        <div class="assum-label">Renting (Banco A)</div>
+        <div class="assum-value">100K + IVA · 7 años</div>
+        <div class="assum-source">4,5% TIN · residual 1% · cuota OPEX deducible</div>
+      </div>
+      <div class="assum">
+        <div class="assum-label">Préstamo (Banco B)</div>
+        <div class="assum-value">100K · 10 años</div>
+        <div class="assum-source">4,5% TIN · cuota francesa</div>
+      </div>
+      <div class="assum">
+        <div class="assum-label">Cash en B a entrenadores</div>
+        <div class="assum-value">1.000 €/mes</div>
+        <div class="assum-source">No declarado, fuera de books</div>
+      </div>
+      <div class="assum">
+        <div class="assum-label">Canon renovación</div>
+        <div class="assum-value">10.000 € en Y7</div>
+        <div class="assum-source">Renovación franquicia BF a 7 años</div>
+      </div>
+      <div class="assum">
+        <div class="assum-label">Tipo IS</div>
+        <div class="assum-value">15% / 25%</div>
+        <div class="assum-source">Reducido 2 primeros ejercicios con beneficio</div>
+      </div>
+      <div class="assum">
+        <div class="assum-label">Crédito IVA del CapEx</div>
+        <div class="assum-value">38.080 €</div>
+        <div class="assum-source">Compensa IVA mensual hasta M18</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt download-block">
+  <div class="container center">
+    <h2>Descargar datos</h2>
+    <p>Exporta todo el modelo a CSV (P&L anual + amortización + flujo mensual completo de 120 meses).</p>
+    <div class="downloads">
+      <button class="btn primary" onclick="downloadCSV('anual')">📊 P&L Anual + Cash Flow (CSV)</button>
+      <button class="btn" onclick="downloadCSV('mensual')">📅 Detalle Mensual 120 meses (CSV)</button>
+      <button class="btn" onclick="downloadCSV('amort')">🏦 Tabla amortización préstamo (CSV)</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Modelo Viladecans · Verificado triple contra distribución mensual real de Sant Boi (Oct 2025 – Dic 2026)</p>
+    <p class="footer-small">Construido por Coach con datos reales del franquiciado · Mayo 2026</p>
+  </div>
+</footer>
+
+<script src="./data.js"></script>
+<script src="./main.js"></script>
+</body>
+</html>
