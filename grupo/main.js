@@ -90,7 +90,7 @@ Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Int
 new Chart(document.getElementById('chart-ebitda'), {
   type: 'bar',
   data: {
-    labels: ['Sant Boi (410)', 'Viladecans (370)', 'Centro BCN (500)', 'CrossFit (200)', 'TOTAL'],
+    labels: ['Sant Boi (410)', 'Viladecans (370)', 'BF Virrei Amat (500)', 'CrossFit (200)', 'TOTAL'],
     datasets: [
       {
         label: 'EBITDA Books anual',
@@ -126,7 +126,7 @@ new Chart(document.getElementById('chart-cf'), {
     datasets: [
       { label: 'Sant Boi', data: G.consolidado.map(c => c.SB), backgroundColor: 'rgba(59, 130, 246, 0.85)', borderRadius: 4 },
       { label: 'Viladecans', data: G.consolidado.map(c => c.Vila), backgroundColor: 'rgba(46, 204, 113, 0.85)', borderRadius: 4 },
-      { label: 'Centro BCN', data: G.consolidado.map(c => c.BCN), backgroundColor: 'rgba(168, 85, 247, 0.85)', borderRadius: 4 },
+      { label: 'BF Virrei Amat', data: G.consolidado.map(c => c.BCN), backgroundColor: 'rgba(168, 85, 247, 0.85)', borderRadius: 4 },
       { label: 'CrossFit', data: G.consolidado.map(c => c.CrossFit), backgroundColor: 'rgba(255, 77, 46, 0.85)', borderRadius: 4 },
     ]
   },

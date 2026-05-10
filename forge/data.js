@@ -165,19 +165,10 @@ window.PITCH_DATA = {
 
   equipo: [
     {
-      iniciales: "CM",
-      gradient: "linear-gradient(135deg, #FF6B35, #ff8f66)",
-      nombre: "Carlos Magretti Fernández",
-      rol: "COO · Operaciones",
-      bio: "Más de 10 años gestionando centros deportivos. Brooklyn Fitboxing TOP 5 mundial. Sant Boi: 300 socios en 6 meses, 10,7x vs plan inicial. Conversión 55% (vs 35-40% media de mercado).",
-      capital: "45.667 €",
-      quote: "El mejor operador de centros fitness que conocemos.",
-    },
-    {
       iniciales: "OP",
       gradient: "linear-gradient(135deg, #FFB800, #ffe066)",
       nombre: "Olivier Philippe",
-      rol: "CFO · Finanzas y Estrategia",
+      rol: "Co-fundador · Finanzas y Estrategia",
       bio: "Más de 15 años en inversión inmobiliaria. Multi-emprendedor serial. Estructuración financiera y fundraising. Control de costes y optimización de márgenes.",
       capital: "45.667 €",
       quote: "Disciplina financiera y visión estratégica a largo plazo.",
@@ -186,10 +177,19 @@ window.PITCH_DATA = {
       iniciales: "JA",
       gradient: "linear-gradient(135deg, #FF6B35, #FFB800)",
       nombre: "Joachim Antonsen",
-      rol: "CEO · Business Dev y Growth",
-      bio: "Lead Partner Manager EMEA en Shopify. Partnerships multi-mercado (FR, ES, PT, GR). Socio en 3 boxes BF (Sant Boi, Viladecans, Centro BCN abriendo sep 2027). Red de contactos internacional.",
+      rol: "Co-fundador · Business Dev y Growth",
+      bio: "Lead Partner Manager EMEA en Shopify. Partnerships multi-mercado (FR, ES, PT, GR). Socio en 3 clubs BF (Sant Boi, Viladecans, BF Virrei Amat abriendo sep 2027). Red de contactos internacional.",
       capital: "45.667 €",
       quote: "El growth engine que lleva el proyecto al siguiente nivel.",
+    },
+    {
+      iniciales: "CM",
+      gradient: "linear-gradient(135deg, #FF6B35, #ff8f66)",
+      nombre: "Carlos Magretti Fernández",
+      rol: "Gerente Operacional",
+      bio: "Más de 10 años gestionando centros deportivos. Brooklyn Fitboxing TOP 5 mundial. Sant Boi: 300 socios en 6 meses, 10,7x vs plan inicial. Conversión 55% (vs 35-40% media de mercado).",
+      capital: "45.667 €",
+      quote: "El mejor operador de centros fitness que conocemos.",
     },
   ],
 
@@ -227,7 +227,7 @@ window.PITCH_DATA = {
       mitigacion: "Foco en Nou Barris underserved en premium. Ningún operador en zona ofrece Hyrox + recovery. Demografía 200K hab valida la captura.",
     },
     {
-      riesgo: "¿Canibalización con Centro BCN BF (misma plaza)?",
+      riesgo: "¿Canibalización con BF Virrei Amat (misma plaza)?",
       mitigacion: "Conceptos complementarios, no competidores. BF cardio/boxing 58€ vs FORGE CrossFit/Hyrox/Recovery 95€. Cross-selling natural entre los dos. ~500 socios BF en zona = base de leads pre-construida cuando FORGE abre 2029.",
     },
   ],
@@ -235,7 +235,7 @@ window.PITCH_DATA = {
   oportunidad: {
     hyrox: { atletas2026: "1,3M", evento: "Hyrox Barcelona Fira · Nov 2026", crecimiento: "Mercado virgen en Nou Barris" },
     recovery: { yoy: "+30%", desc: "Demanda recovery + fisio integrada post-pandemia" },
-    sinergiaBF: ["Sant Boi", "Viladecans", "Centro BCN BF (Virrei Amat, sep 2027)"],
-    sinergiaVirrei: "Centro BCN BF abre sep 2027 en la MISMA Plaza Virrei Amat. FORGE abre verano 2029 con base de leads ya construida (~500 socios BF en zona). Cross-selling natural: BF cardio/boxing + FORGE CrossFit/Hyrox/Recovery. Mismo equipo operativo (Jo Soc Fit). Brand recognition compartido en barrio.",
+    sinergiaBF: ["BF Sant Boi", "BF Viladecans", "BF Virrei Amat (sep 2027)"],
+    sinergiaVirrei: "BF Virrei Amat abre sep 2027 en la MISMA Plaza Virrei Amat. FORGE abre verano 2029 con base de leads ya construida (~500 socios BF en zona). Cross-selling natural: BF cardio/boxing + FORGE CrossFit/Hyrox/Recovery. Mismo equipo operativo (Jo Soc Fit). Brand recognition compartido en barrio.",
   },
 };
